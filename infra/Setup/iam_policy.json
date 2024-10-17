@@ -237,21 +237,6 @@
                 "elasticloadbalancing:ModifyRule"
             ],
             "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-              "elasticloadbalancing:DescribeListenerAttributes",
-              "elasticloadbalancing:DescribeLoadBalancers",
-              "elasticloadbalancing:DescribeTargetGroups",
-              "elasticloadbalancing:DescribeTargetHealth",
-              "elasticloadbalancing:RegisterTargets",
-              "elasticloadbalancing:DeregisterTargets",
-              "elasticloadbalancing:ModifyListener",
-              "elasticloadbalancing:CreateListener",
-              "elasticloadbalancing:DeleteListener"
-            ],
-            "Resource": "*"
-          }
+        }
     ]
 }
