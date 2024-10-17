@@ -3,9 +3,9 @@ name: CI/CD for Frontend
 on:
   push:
     branches:
-      - main
+      - master
     paths:
-      - 'fe/**'
+      - 'app/**'
   workflow_dispatch:  # Cho phép chạy workflow thủ công
 
 jobs:
