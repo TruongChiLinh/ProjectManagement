@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'app/**'
+    # paths:
+    #   - 'app/**'
   workflow_dispatch:  # Cho phép chạy workflow thủ công
 
 jobs:
