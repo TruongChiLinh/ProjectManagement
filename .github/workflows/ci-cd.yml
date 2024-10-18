@@ -16,6 +16,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Checkout again in the deploy job (if needed)
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -25,8 +28,7 @@ jobs:
 
       - name: Sync files to S3
         run: |
-          cd app
-          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }}/ --delete
+          aws s3 sync app s3://${{ secrets.AWS_S3_BUCKET }}/ --delete
 
       - name: Output S3 URL
         run: |
