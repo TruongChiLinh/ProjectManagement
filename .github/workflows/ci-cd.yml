@@ -1,30 +1,35 @@
-name: CI/CD for Frontend
+name: CI/CD for S3 Deployment
 
 on:
   push:
     branches:
-      - master
-    paths:
-      - 'app/index.html'
-  workflow_dispatch:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@0.5.0
+        uses: jakejarvis/s3-sync-action@0.5.6
         with:
-          args: --acl public-read --delete
+          args: --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }} 
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: 'app'  
-      - name: Deployment completed
-        run: echo "Deployment to S3 completed successfully!"  
-          echo "http://${{ secrets.AWS_S3_BUCKET }}.s3.amazonaws.com/index.html"
+          AWS_REGION: ${{ secrets.AWS_REGION }}  
+          SOURCE_DIR: "app"  # Thư mục chứa index.html
+
+      - name: Output S3 URL
+        run: |
+          echo "Your application is deployed at: http://${AWS_S3_BUCKET}.s3.${AWS_REGION}.amazonaws.com/index.html"
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
