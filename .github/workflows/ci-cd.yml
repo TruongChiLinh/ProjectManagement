@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - app/**
 
 jobs:
   build:
@@ -17,8 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout again in the deploy job (if needed)
-
+        uses: actions/checkout@v2  
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
