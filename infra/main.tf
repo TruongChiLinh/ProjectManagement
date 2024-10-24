@@ -80,21 +80,15 @@ module "ec2" {
 
 }
 
-# resource "random_string" "db_password" {
-#   length           = 16
-#   special          = true
-#   override_special = "/@£$"
-# }
 
-# module "rds" {
-#   source                = "./modules/rds"
-#   db_identifier         = "mydb"
-#   engine                = "mysql"  
-#   instance_class        = "db.t3.micro"
-#   allocated_storage      = 20
-#   username              = "admin"
-#   password              = random_string.db_password.result 
-#   db_name               = "testdb"
-#   vpc_security_group_ids = [module.vpc.default_security_group_id]  
-#   subnet_ids             = module.vpc.private_subnet_ids  
-# }
+
+# Outputs từ module RDS MySQL
+output "rds_mysql_endpoint" {
+  value = module.rds_mysql.rds_endpoint
+}
+
+output "rds_mysql_security_group_id" {
+  value = module.rds_mysql.rds_security_group_id
+}
+
+
