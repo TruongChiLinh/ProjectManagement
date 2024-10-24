@@ -1,42 +1,73 @@
-# variable "db_identifier" {
-#   description = "The name of the RDS instance"
-#   type        = string
-# }
 
-# variable "engine" {
-#   description = "The database engine to use"
-#   type        = string
-# }
+variable "vpc_id" {
 
-# variable "instance_class" {
-#   description = "The instance type for the database"
-#   type        = string
-# }
+}
+variable "cidr_allow" {
+}
 
-# variable "allocated_storage" {
-#   description = "The allocated storage in gigabytes"
-#   type        = number
-# }
+variable "username" {
+}
+variable "rd_pwd_postgre" {
 
-# variable "username" {
-#   description = "The database username"
-#   type        = string
-# }
+}
+variable "identifier_db" {
+}
 
-# variable "db_name" {
-#   description = "The name of the database"
-#   type        = string
-# }
+variable "db_name" {
+}
+variable "enginedb" {
 
-# variable "vpc_security_group_ids" {
-#   description = "The VPC security group IDs for the RDS instance"
-#   type        = list(string)
-# }
+}
+variable "engine_version" {
 
-# variable "subnet_ids" {
-#   description = "The VPC subnet IDs for the RDS instance"
-#   type        = list(string)
-# }
-# variable "password" {
-#   type = string
-# }
+}
+variable "instance_class" {
+}
+
+variable "db_port" {
+}
+
+variable "allocated_storage" {
+}
+variable "max_allocated_storage" {
+}
+variable "storage_type" {
+}
+
+variable "availability_zone" {
+}
+variable "db_subnet_group_name" {
+
+}
+variable "skip_final_snapshot" {
+}
+
+variable "publicly_accessible" {
+}
+
+variable "parameter_group_family" {
+
+}
+variable "parameter_group_name_description" {
+}
+
+variable "multi_az" {
+}
+
+variable "apply_immediately" {
+}
+
+variable "monitoring_interval" {
+}
+variable "iam_monitoring_interval_rds_arn" {
+
+}
+variable "backup_retention_period" {
+
+}
+variable "tags" {
+
+}
+variable "storage_credential_to_ssm" {
+
+}
