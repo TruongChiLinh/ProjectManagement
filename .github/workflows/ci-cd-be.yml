@@ -29,7 +29,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
-        context: ./service  # Build image từ thư mục service
+        context: ./service  
         file: service/Dockerfile
         push: true
         tags: bepython/hello-world:latest

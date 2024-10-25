@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: <your-docker-hub-username>/hello-world:latest # Image từ Docker Hub
+        image: bepython/hello-world:latest 
         ports:
         - containerPort: 5000
